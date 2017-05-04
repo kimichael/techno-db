@@ -1,0 +1,61 @@
+@startuml
+
+cloud App_core [
+	App Core
+]
+
+database Operative_storage1 [
+	Operative storage-1
+]
+database Operative_storage2 [
+	Operative storage-2
+]
+database Operative_storage3 [
+	Operative storage-3
+]
+database Operative_storage4 [
+	Operative storage-4
+]
+database Operative_storage5 [
+	Operative storage-5
+]
+database Operative_storage6 [
+	Operative storage-N
+]
+database Persistent_storage1 [
+	Persistent Storage-1
+	----
+	Storage for search
+]
+database Persistent_storage2 [
+	Persistent Storage-2
+	----
+	Storage for search
+]
+database Persistent_storage3 [
+	Persistent Storage-3
+	----
+	Storage for search
+]
+database Persistent_storage4 [
+ 	Persistent Storage-N
+ 	----
+	Storage for search
+]
+
+App_core -(0)- Operative_storage1
+App_core -(0)- Operative_storage2
+App_core -(0)- Operative_storage3
+App_core -(0)- Operative_storage4
+App_core -(0)- Operative_storage5
+App_core -(0)- Operative_storage6
+Operative_storage1 -down-> Persistent_storage1
+Operative_storage2 -down-> Persistent_storage2
+Operative_storage3 -down-> Persistent_storage2
+Operative_storage4 -down-> Persistent_storage3
+Operative_storage5 -down-> Persistent_storage4
+Operative_storage6 -down-> Persistent_storage4
+
+
+
+@enduml
