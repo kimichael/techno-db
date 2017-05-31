@@ -1,0 +1,56 @@
+@startuml
+actor User
+
+(Client App)
+
+package "N" {
+	database Operative_Database_N [
+		Operative Database N
+	]
+
+	database Slave_Operative_Database_N [
+		Slave Operative Database N
+	]
+}
+
+package "K" {
+	database Persistent_Database_K [
+		Persistent Database K
+	]
+
+	database Slave_Operative_Database_K [
+		Slave Operative Database K
+	]
+
+	database Backup_Operative_Database_K [
+		Backup Operative Database K
+	]
+}
+
+package "Z" {
+	database Search_Database_Z [
+		Search Database Z
+	]
+
+	database Backup_Search_Database_Z [
+		Backup Search Database Z
+	]
+}
+
+User -> (Client App)
+(Client App) -> User
+
+(Client App) -> Operative_Database_N : f(user_id) = N
+Operative_Database_N -> (Client App)
+
+Operative_Database_N ..> Slave_Operative_Database_N : Master-Slave
+
+Operative_Database_N -> Persistent_Database_K : f(user_id) = K
+
+Persistent_Database_K .down.> Slave_Operative_Database_K : Master-Slave
+Persistent_Database_K .down.> Backup_Operative_Database_K : Periodic Backup
+
+Persistent_Database_K -> Search_Database_Z : f(user_id) = Z
+Search_Database_Z ..> Backup_Search_Database_Z
+
+@enduml
