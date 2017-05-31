@@ -9,3 +9,6 @@
 - Болсун Станислав
 - Бурмистров Михаил
 - Ким Михаил
+- Андрей Ивачёв
+# Прототип
+Прототип находится на [techno-db-messaging-prototype](https://github.com/kimichael/techno-db)
