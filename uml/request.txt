@@ -7,8 +7,4 @@ Persistent_DB_K --> Slave_Operative_DB_K : Master-Slave
 Persistent_DB_K --> Backup_Operative_DB_K : Periodic backup
 Persistent_DB_K -> Search_DB_Z : f(user_id) = Z
 Search_DB_Z --> Backup_Search_DB_Z : Periodic backup
-Search_DB_Z -> Persistent_DB_K : Seek
-Persistent_DB_K -> Operative_DB_N : Cache
-Operative_DB_N -> Client_App : Answer
-Client_App -> User
 @enduml

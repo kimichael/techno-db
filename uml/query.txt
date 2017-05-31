@@ -1,0 +1,10 @@
+@startuml
+User -> Client_App
+Client_App -> Operative_DB_N : User request f(user_id) = N
+Operative_DB_N --> Client_App : Hot answer
+Operative_DB_N -> Persistent_DB_K : User request f(user_id) = K
+Persistent_DB_K --> Client_App : Cold Answer
+Persistent_DB_K -> Operative_DB_N : Cache
+Operative_DB_N -> Client_App : Answer
+Client_App -> User
+@enduml
